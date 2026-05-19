@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes glow {
+  0%, 100% { text-shadow: 0 0 5px rgba(139, 92, 246, 0.3); }
+  50% { text-shadow: 0 0 15px rgba(139, 92, 246, 0.6), 0 0 30px rgba(139, 92, 246, 0.3); }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+:root {
+  color-scheme: dark;
+  --color-background: #050714;
+  --color-card: #0B1426;
+  --color-textPrimary: #E6EDF9;
+  --color-textSecondary: #8EA2C2;
+}
+
+.light {
+  color-scheme: light;
+  --color-background: #F0F2F5;
+  --color-card: #FFFFFF;
+  --color-textPrimary: #1A1A2E;
+  --color-textSecondary: #6B7280;
+}
+
+.light .border-white\/10 {
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.light .bg-white\/5 {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.light .bg-black\/20 {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.light .topbar-bg {
+  background-color: #FFFFFF;
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+.light .text-white {
+  color: #1A1A2E;
+}
+
+.light .hover\:text-white:hover {
+  color: #1A1A2E;
+}
+
+.light .hover\:bg-white\/5:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.light .hover\:bg-white\/10:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.light .bg-card {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  transition-property: background-color, border-color, color, opacity, box-shadow, transform;
+  transition-duration: 150ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*:focus-visible {
+  outline: 2px solid rgba(139, 92, 246, 0.5);
+  outline-offset: 2px;
+}
+
+body {
+  @apply bg-background text-textPrimary antialiased;
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.5);
+}

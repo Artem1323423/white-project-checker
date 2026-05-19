@@ -1,0 +1,79 @@
+{
+  "name": "white-project-checker",
+  "version": "1.0.15",
+  "private": true,
+  "main": "dist-electron/main.js",
+  "author": "White Project Team",
+  "description": "White Project CHECKER anti-cheat application.",
+  "scripts": {
+    "dev": "concurrently \"tsc -p tsconfig.electron.json --watch\" \"vite\" \"wait-on http://localhost:5173 dist-electron/main.js && electron .\"",
+    "build": "tsc -p tsconfig.electron.json && vite build",
+    "package": "npm run build && electron-builder --win",
+    "start": "electron .",
+    "lint": "eslint . --ext .ts,.tsx",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\""
+  },
+  "dependencies": {
+    "electron-updater": "^6.8.3",
+    "framer-motion": "^11.0.0",
+    "lucide-react": "^0.540.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.18.0",
+    "sql.js": "^1.14.1",
+    "zustand": "^4.5.0"
+  },
+  "devDependencies": {
+    "@rolldown/plugin-babel": "^0.2.3",
+    "@types/node": "^20.14.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^6.0.2",
+    "autoprefixer": "^10.4.19",
+    "babel-plugin-react-compiler": "^1.0.0",
+    "concurrently": "^8.2.2",
+    "electron": "^26.3.0",
+    "electron-builder": "^24.7.0",
+    "eslint": "^8.57.0",
+    "postcss": "^8.4.35",
+    "prettier": "^3.5.0",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.5.4",
+    "vite": "^8.0.13",
+    "wait-on": "^7.0.3"
+  },
+  "build": {
+    "appId": "com.whiteproject.checker",
+    "productName": "White Project Checker",
+    "files": [
+      "dist/**",
+      "dist-electron/**",
+      "public/**",
+      "node_modules/sql.js/**",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "build",
+      "output": "release"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "public/logo.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "public/logo.ico",
+      "uninstallerIcon": "public/logo.ico",
+      "installerHeaderIcon": "public/logo.ico",
+      "shortcutName": "White Project Checker"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "Artem1323423",
+      "repo": "white-project-checker"
+    }
+  }
+}
